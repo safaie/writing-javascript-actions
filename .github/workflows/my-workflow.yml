@@ -1,18 +1,37 @@
+#
+#name: "JS Actions"
+#
+#on: [push]
+#
+#jobs:
+#  action:
+#    runs-on: "ubuntu-latest"
+#    steps:
+#      - uses: actions/checkout@v1
+#
+#      - name: "hello-action"
+#        uses: ./.github/actions/hello-world
+#        with:
+##          first-greeting: "Learning Lab User"
+##          second-greeting: "Ali the Alien"
+#          third-greeting: "The one who comes from the future!"
+#
 
-name: "JS Actions"
+name: JS Actions
 
-on: [push]
+on:
+  pull_request:
+    types: [labeled]
 
 jobs:
   action:
-    runs-on: "ubuntu-latest"
+    runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v1
 
-      - name: "hello-action"
+      - name: hello-action
         uses: ./.github/actions/hello-world
-        with:
-#          first-greeting: "Learning Lab User"
-#          second-greeting: "Ali the Alien"
-          third-greeting: "The one who comes from the future!"
 
+      - name: ha-ha
+        uses: ./.github/actions/joke-action
